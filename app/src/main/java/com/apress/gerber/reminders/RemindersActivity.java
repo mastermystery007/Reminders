@@ -263,11 +263,22 @@ public class RemindersActivity extends ActionBarActivity {
                 //create new Reminder
                 fireCustomDialog(null);
                 return true;
+            case R.id.action_about:
+                //create new Reminder
+                fireAbooutDialog();
+                return true;
             case R.id.action_exit:
                 finish();
                 return true;
             default:
                 return false;
         }
+    }
+
+    private void fireAbooutDialog() {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_about);
+        dialog.show();
     }
 }
