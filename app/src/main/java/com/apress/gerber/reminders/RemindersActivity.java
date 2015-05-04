@@ -2,6 +2,7 @@ package com.apress.gerber.reminders;
 
 import android.annotation.TargetApi;
 import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.database.Cursor;
 import android.os.Build;
 import android.support.v7.app.ActionBar;
@@ -25,6 +26,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Date;
 
 
 public class RemindersActivity extends ActionBarActivity {
@@ -83,7 +86,7 @@ public class RemindersActivity extends ActionBarActivity {
             public void onItemClick(AdapterView<?> parent, View view, final int masterListPosition, long id) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(RemindersActivity.this);
                 ListView modeListView = new ListView(RemindersActivity.this);
-                String[] modes = new String[]{"Edit Reminder", "Delete Reminder"};
+                String[] modes = new String[]{"Edit Reminder", "Delete Reminder", "Schedule Reminder"};
                 ArrayAdapter<String> modeAdapter = new ArrayAdapter<>(RemindersActivity.this,
                         android.R.layout.simple_list_item_1, android.R.id.text1, modes);
                 modeListView.setAdapter(modeAdapter);
@@ -99,9 +102,12 @@ public class RemindersActivity extends ActionBarActivity {
                             Reminder reminder = mDbAdapter.fetchReminderById(nId);
                             fireCustomDialog(reminder);
                             //delete reminder
-                        } else {
+                        } else if (position == 0) {
                             mDbAdapter.deleteReminderById(getIdFromPosition(masterListPosition));
                             mCursorAdapter.changeCursor(mDbAdapter.fetchAllReminders());
+                        } else {
+                            final Date today = new Date();
+                            new TimePickerDialog(RemindersActivity.this, null,today.getHours(), today.getMinutes(), false).show();
                         }
                         dialog.dismiss();
                     }
