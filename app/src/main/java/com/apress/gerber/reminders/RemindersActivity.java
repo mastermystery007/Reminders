@@ -121,7 +121,7 @@ public class RemindersActivity extends ActionBarActivity {
                                     scheduleReminder(alarm.getTime(), reminder.getContent());
                                 }
                             };
-                            new TimePickerDialog(RemindersActivity.this, null,today.getHours(), today.getMinutes(), false).show();
+                            new TimePickerDialog(RemindersActivity.this, listener,today.getHours(), today.getMinutes(), false).show();
                         }
                         dialog.dismiss();
                     }
