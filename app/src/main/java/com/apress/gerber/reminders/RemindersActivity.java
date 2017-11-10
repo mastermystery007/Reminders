@@ -190,7 +190,7 @@ public class RemindersActivity extends ActionBarActivity {
         mDbAdapter.createReminder("Buy Learn Android Studio", true);
         mDbAdapter.createReminder("Send Dad birthday gift", false);
         mDbAdapter.createReminder("Dinner at the Gage on Friday", false);
-        mDbAdapter.createReminder("String squash racket", false);
+
         mDbAdapter.createReminder("Shovel and salt walkways", false);
         mDbAdapter.createReminder("Prepare Advanced Android syllabus", true);
         mDbAdapter.createReminder("Buy new office chair", false);
