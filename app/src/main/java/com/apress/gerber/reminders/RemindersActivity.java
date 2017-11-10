@@ -101,12 +101,14 @@ public class RemindersActivity extends ActionBarActivity {
                 modeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                         int nId = getIdFromPosition(masterListPosition);
                         final Reminder reminder = mDbAdapter.fetchReminderById(nId);
+
                         //edit reminder
                         if (position == 0) {
                             fireCustomDialog(reminder);
+
+
                             //delete reminder
                         } else if (position == 0) {
                             mDbAdapter.deleteReminderById(getIdFromPosition(masterListPosition));
