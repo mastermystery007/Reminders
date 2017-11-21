@@ -10,6 +10,7 @@ public class Reminder {
 
     public Reminder(int id, String content, int important) {
         mId = id;
+
         mImportant = important;
         mContent = content;
     }
